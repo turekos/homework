@@ -12,7 +12,7 @@ let appData = {
 };
 
 
-/*for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 2; i++) {
     let requiredItem = prompt("Enter the required item this month", " "),
         costOfItem = +prompt("How much it costs", " ");
     if ((typeof (requiredItem)) == 'string' && (typeof (requiredItem)) != null &&
@@ -24,26 +24,7 @@ let appData = {
         i = i - 1;
     }
 
-}*/
-let i = 0;
-
-
-do {
-    let requiredItem = prompt("Enter the required item this month", " "),
-        costOfItem = +prompt("How much it costs", " ");
-    if ((typeof (requiredItem)) == 'string' && (typeof (requiredItem)) != null &&
-        (typeof (costOfItem)) != null && requiredItem != " " && costOfItem != " " && requiredItem.length < 50) {
-        console.log('good');
-        appData.expenses[requiredItem] = costOfItem;
-    } else {
-        console.log("one more time");
-        i = i - 1;
-    }
-    i++;
-} while (i < 2);
-
-
-
+}
 
 appData.moneyPerDay = appData.budget / 30;
 if (appData.moneyPerDay < 100) {

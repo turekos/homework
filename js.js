@@ -1,6 +1,15 @@
 "use strict";
-let money = +prompt("Budget for a month", " "),
+let money, time;
+
+function start() {
+  money = +prompt("Budget for a month", " ");
   time = prompt("Enter date please YYYY-MM-DD", "");
+
+  while (isNaN(money) || money == " " || money == null) {
+    money = +prompt("Budget for a month", " ");
+  }
+}
+start();
 
 let appData = {
   budget: money,
@@ -8,7 +17,7 @@ let appData = {
   optionalExpenses: {},
   expenses: {},
   income: [],
-  savings: false
+  savings: true
 };
 
 for (let i = 0; i < 2; i++) {
@@ -29,8 +38,10 @@ for (let i = 0; i < 2; i++) {
     i = i - 1;
   }
 }
+
+appData.moneyPerDay = (appData.budget / 30).toFixed();
+
 function detectLevel() {
-  appData.moneyPerDay = appData.budget / 30;
   if (appData.moneyPerDay < 100) {
     console.log("Low");
   } else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
@@ -46,7 +57,8 @@ detectLevel();
 console.log(appData);
 console.log(appData.expenses);
 
-let detectDayBudget = () => alert("Budget for a one day" + appData.budget / 30);
+let detectDayBudget = () =>
+  alert("Budget for a one day" + (appData.budget / 30).toFixed(2));
 detectDayBudget();
 
 function chooseOptExpenses() {
@@ -71,4 +83,15 @@ function chooseOptExpenses() {
 }
 chooseOptExpenses();
 
-console.log(appData.optionalExpenses);
+function checkSavings() {
+  if (appData.savings == true) {
+    let save = +prompt("Your deposit", ""),
+      percent = prompt("What procent", "");
+
+    appData.monthIncome = (save / 100 / 12) * percent;
+
+    alert("Deposite month income: " + appData.monthIncome);
+  }
+}
+
+checkSavings();

@@ -61,7 +61,7 @@ let detectDayBudget = () =>
   alert("Budget for a one day" + (appData.budget / 30).toFixed(2));
 detectDayBudget();
 
-function chooseOptExpenses() {
+/*function chooseOptExpenses() {
   for (let i = 0; i < 3; i++) {
     let notRequiredItem = prompt("Not required item for a month", " "),
       costNotRequiredItem = +prompt("How much it costs", " ");
@@ -75,6 +75,28 @@ function chooseOptExpenses() {
     ) {
       console.log("good");
       appData.optionalExpenses[notRequiredItem] = costNotRequiredItem;
+    } else {
+      console.log("try one more time");
+      i = i - 1;
+    }
+  }
+}
+chooseOptExpenses();*/
+
+
+
+
+function chooseOptExpenses() {
+  for (let i = 1; i < 4; i++) {
+    let notRequiredItem = prompt("Not required item for a month" + " " + i, " ");
+    if (
+      typeof notRequiredItem == "string" &&
+      typeof notRequiredItem != null &&
+      notRequiredItem != " " &&
+      notRequiredItem.length < 50
+    ) {
+      console.log("good");
+      appData.optionalExpenses[i] = notRequiredItem;
     } else {
       console.log("try one more time");
       i = i - 1;
